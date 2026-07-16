@@ -298,36 +298,6 @@ Database
 - SQL Queries
 - Database Connection
 
----
-
-## 👨‍💻 Member 3
-
-ETL
-
-- Extract
-- Transform
-- Load
-
----
-
-## 👨‍💻 Member 4
-
-Analytics
-
-- Graphs
-- Reports
-- Dashboard
-
----
-
-## 👨‍💻 Member 5
-
-Documentation & CI/CD
-
-- README
-- FAQ
-- GitHub Actions
-- Final Integration
 
 ---
 
