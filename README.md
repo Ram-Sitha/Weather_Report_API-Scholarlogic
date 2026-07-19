@@ -1,230 +1,461 @@
-# Weather Analytics ETL Pipeline
+# 🌦️ Weather Analytics ETL Pipeline
 
-A complete beginner-friendly data engineering project that collects weather
-data from Open-Meteo, transforms it with Python, stores it in a SQL database,
-and generates graphs and FAQ answers.
+<div align="center">
 
-## Architecture
+# 🌍 Weather Analytics ETL Pipeline
 
-```text
-City name
-   |
-   v
-Open-Meteo Geocoding API
-   |
-   v
-Latitude + Longitude
-   |
-   v
-Open-Meteo Forecast API
-   |
-   v
-Extract -> Transform -> Load
-   |
-   v
-SQLite / MySQL database
-   |
-   v
-Pandas analysis -> Matplotlib graphs -> FAQ report
-   |
-   v
-GitHub Actions automation
+### *Building an End-to-End Weather Data Engineering Pipeline using Python, MySQL, ETL & GitHub Actions*
+
+<p align="center">
+<img src="https://readme-typing-svg.herokuapp.com?font=Poppins&size=24&duration=3500&pause=800&color=00BFFF&center=true&vCenter=true&width=700&lines=Weather+Analytics+ETL+Pipeline;Python+%7C+MySQL+%7C+ETL+%7C+GitHub+Actions;Data+Engineering+Project;Automated+Weather+Analytics" />
+</p>
+
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![MySQL](https://img.shields.io/badge/MySQL-Database-orange?logo=mysql)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-ORM-red)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-purple?logo=pandas)
+![GitHub Actions](https://img.shields.io/badge/GitHub-Actions-success?logo=githubactions)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-Graphs-green)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+
+---
+
+### 🚀 End-to-End Data Engineering Project
+
+Extract ➜ Transform ➜ Load ➜ Analyze ➜ Visualize ➜ Automate
+
+</div>
+
+---
+
+# 📖 Project Overview
+
+This project demonstrates how a **real-world ETL (Extract, Transform, Load)** pipeline works by collecting live weather information from the **Open-Meteo API**, processing it with Python, storing it inside a **MySQL database**, generating analytical reports, visualizations, and automating the entire workflow using **GitHub Actions**.
+
+Instead of only displaying live weather, the project stores historical snapshots that can later be analyzed for trends, comparisons, and reporting.
+
+---
+
+# ✨ Features
+
+* 🌍 Fetch live weather data for multiple cities
+* 🗺️ Automatic geocoding (city → latitude & longitude)
+* 🔄 Complete ETL pipeline
+* 🗄️ Store data in MySQL
+* 📊 Generate CSV reports
+* 📈 Generate weather graphs
+* ❓ Automatically generate FAQ reports
+* ⚙️ GitHub Actions automation
+* 🧪 Unit testing with Pytest
+* 📁 Clean project architecture
+
+---
+
+# 🏗️ Project Architecture
+
+```mermaid
+flowchart TD
+
+A[City Names]
+B[Open-Meteo Geocoding API]
+C[Latitude & Longitude]
+D[Weather API]
+E[Extract]
+F[Transform]
+G[Load]
+H[(MySQL)]
+I[Pandas Analysis]
+J[Graphs]
+K[FAQ Report]
+L[GitHub Actions]
+
+A --> B
+B --> C
+C --> D
+D --> E
+E --> F
+F --> G
+G --> H
+H --> I
+I --> J
+I --> K
+L --> E
 ```
 
-## 1. Requirements
+---
 
-Install:
+# 🛠️ Tech Stack
 
-- Python 3.11 or newer
-- Git
-- VS Code
-- Optional: MySQL Server and MySQL Workbench
-- GitHub account
+| Technology     | Purpose           |
+| -------------- | ----------------- |
+| Python         | Core Programming  |
+| Open-Meteo API | Live Weather Data |
+| MySQL          | Database          |
+| SQLAlchemy     | ORM               |
+| Pandas         | Data Analysis     |
+| Matplotlib     | Visualization     |
+| Git            | Version Control   |
+| GitHub         | Repository        |
+| GitHub Actions | Automation        |
+| Pytest         | Testing           |
 
-No weather API key is required.
+---
 
-## 2. Download and open the project
+# 📂 Project Structure
+
+```text
+weather-analytics-etl/
+
+├── .github/
+│   └── workflows/
+│       └── weather-etl.yml
+│
+├── reports/
+│   ├── graphs/
+│   ├── current_weather.csv
+│   ├── daily_forecast.csv
+│   └── faq_report.md
+│
+├── tests/
+│
+├── config.py
+├── database.py
+├── extract.py
+├── transform.py
+├── load.py
+├── etl_pipeline.py
+├── analysis.py
+├── main.py
+├── weather_codes.py
+├── schema.sql
+├── requirements.txt
+└── README.md
+```
+
+---
+
+# 🔄 ETL Workflow
+
+## ① Extract
+
+✔ Convert city names into coordinates
+
+✔ Fetch weather information
+
+✔ Receive JSON response
+
+---
+
+## ② Transform
+
+✔ Remove unnecessary fields
+
+✔ Convert timestamps
+
+✔ Handle missing values
+
+✔ Convert weather codes into readable descriptions
+
+✔ Prepare structured records
+
+---
+
+## ③ Load
+
+✔ Insert data into MySQL
+
+✔ Prevent duplicate records
+
+✔ Store execution logs
+
+✔ Maintain historical weather data
+
+---
+
+# 🗄️ Database Schema
+
+### Locations
+
+```text
+id
+city
+country
+latitude
+longitude
+timezone
+```
+
+### Weather Records
+
+```text
+temperature
+humidity
+pressure
+wind_speed
+precipitation
+weather_condition
+recorded_at
+```
+
+### Daily Forecast
+
+```text
+forecast_date
+min_temperature
+max_temperature
+precipitation
+wind_speed
+sunrise
+sunset
+```
+
+### ETL Logs
+
+```text
+city
+status
+started_at
+completed_at
+records_loaded
+error_message
+```
+
+---
+
+# 🚀 Getting Started
+
+## Clone Repository
 
 ```bash
-git clone YOUR_REPOSITORY_URL
+git clone https://github.com/USERNAME/weather-analytics-etl.git
+
 cd weather-analytics-etl
 ```
 
-## 3. Create a virtual environment
+---
 
-Windows:
+## Create Virtual Environment
 
 ```bash
 python -m venv .venv
+```
+
+Windows
+
+```bash
 .venv\Scripts\activate
 ```
 
-macOS/Linux:
+Linux/macOS
 
 ```bash
-python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-## 4. Install packages
+---
+
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 5. Create the environment file
+---
 
-Windows:
+## Configure Environment
 
-```bash
-copy .env.example .env
-```
-
-macOS/Linux:
-
-```bash
-cp .env.example .env
-```
-
-The default configuration uses SQLite:
-
-```env
-DATABASE_URL=sqlite:///weather.db
-CITIES=Bengaluru,Chennai,Hyderabad,Mumbai,Delhi
-```
-
-## 6. Run the full project
-
-```bash
-python main.py
-```
-
-This command:
-
-1. Creates database tables.
-2. Finds the coordinates of every city.
-3. Extracts weather data.
-4. Validates and transforms the JSON data.
-5. Loads current weather and seven-day forecasts.
-6. Prevents duplicate records.
-7. Creates CSV files.
-8. Creates graphs.
-9. Creates `reports/faq_report.md`.
-10. Writes ETL success/failure logs.
-
-## 7. View outputs
-
-Open:
-
-```text
-reports/
-├── current_weather.csv
-├── daily_forecast.csv
-├── faq_report.md
-└── graphs/
-    ├── city_temperature_comparison.png
-    ├── max_temperature_trend.png
-    ├── precipitation_by_city.png
-    └── temperature_vs_humidity.png
-```
-
-## 8. Use MySQL instead of SQLite
-
-Create the database:
-
-```sql
-CREATE DATABASE weather_analytics;
-```
-
-Update `.env`:
+Create a `.env` file
 
 ```env
 DATABASE_URL=mysql+pymysql://root:YOUR_PASSWORD@localhost:3306/weather_analytics
+
+CITIES=Bengaluru,Chennai,Hyderabad,Mumbai,Delhi
 ```
 
-Then run:
+---
+
+## Run the Project
 
 ```bash
 python main.py
 ```
 
-The SQLAlchemy models create the required tables automatically. `schema.sql`
-is also included for manual creation through MySQL Workbench.
+Expected output:
 
-## 9. Run files separately
+```text
+Step 1: Running ETL pipeline...
 
-Only ETL:
+[SUCCESS] Bengaluru
+[SUCCESS] Chennai
+[SUCCESS] Hyderabad
+[SUCCESS] Mumbai
+[SUCCESS] Delhi
 
-```bash
-python etl_pipeline.py
+Step 2: Creating graphs...
+
+Project completed successfully.
 ```
 
-Only analysis and graphs:
+---
 
-```bash
-python analysis.py
+# 📊 Output
+
+The project generates
+
+```
+reports/
+
+current_weather.csv
+
+daily_forecast.csv
+
+faq_report.md
+
+graphs/
+
+max_temperature_trend.png
+
+city_temperature_comparison.png
+
+precipitation_by_city.png
+
+temperature_vs_humidity.png
 ```
 
-Tests:
+---
+
+# 📈 Sample Analysis
+
+The project answers questions such as:
+
+* What is the current weather in each city?
+* Which city has the highest temperature?
+* Which city has the lowest temperature?
+* Which city has the highest rainfall?
+* Which city has the strongest wind?
+* Which weather condition is most common?
+* How does humidity vary with temperature?
+
+---
+
+# ⚙️ GitHub Actions Workflow
+
+Every push to **main** automatically:
+
+```text
+Checkout Code
+
+↓
+
+Install Python
+
+↓
+
+Install Dependencies
+
+↓
+
+Run Tests
+
+↓
+
+Run ETL Pipeline
+
+↓
+
+Generate Reports
+
+↓
+
+Upload Reports
+```
+
+---
+
+# 👨‍💻 Team Workflow
+
+```mermaid
+gitGraph
+
+commit id:"Initial"
+
+branch API
+
+branch Database
+
+branch ETL
+
+branch Analytics
+
+branch Documentation
+
+checkout API
+commit
+
+checkout Database
+commit
+
+checkout ETL
+commit
+
+checkout Analytics
+commit
+
+checkout Documentation
+commit
+
+checkout main
+
+merge API
+
+merge Database
+
+merge ETL
+
+merge Analytics
+
+merge Documentation
+```
+
+---
+
+# 🧪 Run Tests
 
 ```bash
 pytest
 ```
 
-## 10. GitHub team workflow
+---
 
-Create these branches:
+# 🌟 Future Improvements
 
-```text
-feature/api-integration
-feature/database
-feature/etl
-feature/analytics
-feature/documentation-actions
-```
+* 📊 Power BI Dashboard
+* 🤖 Machine Learning Weather Prediction
+* 📱 Mobile Application
+* ☁️ AWS Deployment
+* 🐳 Docker Support
+* 📈 Interactive Dashboards
+* 📩 Email Weather Alerts
+* 🌍 Global City Support
 
-Each member:
+---
 
-```bash
-git checkout -b feature/branch-name
-git add .
-git commit -m "Describe completed work"
-git push origin feature/branch-name
-```
+# 🤝 Contributors
 
-Then create a Pull Request, review it, and merge it into `main`.
+| Member   | Responsibility                 |
+| -------- | ------------------------------ |
+| Member 1 | API Integration                |
+| Member 2 | Database                       |
+| Member 3 | ETL Pipeline                   |
+| Member 4 | Analytics & Visualization      |
+| Member 5 | Documentation & GitHub Actions |
 
-## 11. GitHub Actions
+---
 
-The workflow is stored at:
+<div align="center">
 
-```text
-.github/workflows/weather-etl.yml
-```
+### ⭐ If you found this project helpful, consider giving it a Star!
 
-It runs:
+**Built with ❤️ using Python, MySQL, ETL, and GitHub Actions**
 
-- whenever code is pushed to `main`;
-- whenever a Pull Request targets `main`;
-- manually from the Actions page;
-- every day at 06:00 IST.
-
-The workflow installs Python, installs packages, runs tests, executes the ETL
-pipeline, generates reports, and uploads the report folder as an artifact.
-
-## Important production note
-
-The GitHub workflow uses SQLite for demonstration. Each GitHub-hosted runner is
-temporary, so its database does not permanently retain previous executions.
-For a real scheduled history database, use a cloud MySQL/PostgreSQL database
-and save its connection URL as a GitHub Actions secret.
-
-## Team allocation
-
-| Member | Work |
-|---|---|
-| 1 | `extract.py`, API research and error handling |
-| 2 | `database.py`, `schema.sql`, SQL queries |
-| 3 | `transform.py`, `load.py`, `etl_pipeline.py` |
-| 4 | `analysis.py`, graphs and case study |
-| 5 | Tests, README, GitHub Actions and integration |
+</div>
