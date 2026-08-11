@@ -1,55 +1,97 @@
-🌦 Weather API Data Analytics Dashboard
-An end-to-end Weather API Data Analytics Project developed using Python, MySQL, SQL, HTML, CSS, JavaScript, and Power BI. This project collects real-time weather data from the OpenWeather API, performs ETL (Extract, Transform, Load), stores the processed data in MySQL, analyzes the data using SQL, and visualizes insights through both a Power BI Dashboard and a responsive HTML Dashboard.
+# 🌦️ Weather API Data Analytics Dashboard
 
-📌 Project Overview
-The Weather API Data Analytics Dashboard is designed to demonstrate a complete data analytics workflow. The application fetches live weather information from the OpenWeather API, transforms the raw JSON data into a structured format, stores it in a MySQL database, performs SQL analysis, and presents meaningful insights using Power BI and a custom-built HTML dashboard.
+An end-to-end **Weather API Data Analytics Project** built using **Python, Pandas, MySQL, SQL, HTML, CSS, JavaScript, and Power BI**.
 
-🎯 Project Objectives
-Collect real-time weather data using OpenWeather API.
-Build a complete ETL pipeline using Python.
-Clean and transform JSON data using Pandas.
-Store processed data in MySQL.
-Perform SQL-based analysis.
-Develop an interactive Power BI Dashboard.
-Create a responsive HTML, CSS & JavaScript dashboard.
-Automate the weather data collection process.
-🛠 Technology Stack
-Category	Technology
-Programming Language	Python
-API	OpenWeather API
-Data Processing	Pandas
-Data Format	JSON
-Database	MySQL
-Query Language	SQL
-Dashboard	Power BI
-Frontend	HTML, CSS, JavaScript
-Version Control	Git & GitHub
-🏗 Project Architecture
-             OpenWeather API
-                    │
-                    ▼
-          Extract (Python Script)
-                    │
-                    ▼
-         weather_raw.json (Raw Data)
-                    │
-                    ▼
-        Transform (Pandas Cleaning)
-                    │
-                    ▼
-   weather_processed.csv (Processed Data)
-                    │
-                    ▼
-            Load into MySQL Database
-                    │
-        ┌───────────┴───────────┐
-        ▼                       ▼
- SQL Analysis             HTML Dashboard
-        │                       │
-        └───────────┬───────────┘
-                    ▼
-             Power BI Dashboard
-📂 Project Folder Structure
+This project collects real-time weather data from the **OpenWeather API**, performs an **ETL (Extract, Transform, Load)** process using Python, stores the processed data in MySQL, performs SQL-based analysis, and presents insights through **Power BI** and a **responsive web dashboard**.
+
+---
+
+## 📌 Project Overview
+
+The Weather API Data Analytics Dashboard demonstrates a complete data analytics workflow:
+
+**OpenWeather API → Python ETL → Pandas → MySQL → SQL Analysis → Power BI / Web Dashboard**
+
+The project is designed to demonstrate practical skills in:
+
+* REST API integration
+* Python programming
+* Data extraction and transformation
+* Database management
+* SQL analysis
+* Data visualization
+* Frontend development
+* Git and GitHub
+
+---
+
+## 🎯 Project Objectives
+
+* Collect real-time weather data using the OpenWeather API.
+* Extract and process JSON weather data using Python.
+* Clean and transform data using Pandas.
+* Store processed data in MySQL.
+* Perform analytical queries using SQL.
+* Build an interactive Power BI dashboard.
+* Develop a responsive HTML/CSS/JavaScript dashboard.
+* Create a reusable ETL pipeline.
+* Maintain the project using Git and GitHub.
+
+---
+
+## 🛠️ Technology Stack
+
+| Category             | Technology            |
+| -------------------- | --------------------- |
+| Programming Language | Python                |
+| API                  | OpenWeather API       |
+| Data Processing      | Pandas                |
+| Data Format          | JSON                  |
+| Database             | MySQL                 |
+| Query Language       | SQL                   |
+| Data Visualization   | Power BI              |
+| Frontend             | HTML, CSS, JavaScript |
+| Version Control      | Git, GitHub           |
+
+---
+
+## 🏗️ Project Architecture
+
+```text
+                    OpenWeather API
+                           │
+                           ▼
+                  Python Extraction
+                           │
+                           ▼
+                    Raw JSON Data
+                  weather_raw.json
+                           │
+                           ▼
+                  Pandas Transformation
+                           │
+                           ▼
+                Processed CSV Data
+              weather_processed.csv
+                           │
+                           ▼
+                    MySQL Database
+                     weather_data
+                           │
+              ┌────────────┴────────────┐
+              ▼                         ▼
+        SQL Analysis              Web Dashboard
+              │                         │
+              └────────────┬────────────┘
+                           ▼
+                    Power BI Dashboard
+```
+
+---
+
+## 📂 Project Structure
+
+```text
 Weather_Report_API/
 │
 ├── config/
@@ -90,162 +132,409 @@ Weather_Report_API/
 ├── screenshots/
 ├── tests/
 │
+├── .gitignore
 ├── README.md
 ├── requirements.txt
 └── main.py
-🔄 ETL Workflow
-Step 1 – Extract
-Connect to OpenWeather API.
-Fetch live weather data.
-Store the response as JSON.
+```
+
+---
+
+# 🔄 ETL Pipeline
+
+## 1️⃣ Extract
+
+The Python extraction script connects to the OpenWeather API and retrieves real-time weather information.
+
+The raw API response is stored as:
+
+```text
+data/raw/weather_raw.json
+```
+
+### Data collected includes:
+
+* City
+* Country
+* Temperature
+* Feels Like Temperature
+* Humidity
+* Atmospheric Pressure
+* Wind Speed
+* Weather Condition
+* Weather Description
+* Timestamp
+
+---
+
+## 2️⃣ Transform
+
+The transformation process uses **Pandas** to clean and prepare the data.
+
+### Transformation steps:
+
+* Read JSON data.
+* Extract required fields.
+* Handle missing values.
+* Remove duplicate records.
+* Convert timestamps.
+* Format weather attributes.
+* Convert data into CSV format.
+
 Output:
 
-weather_raw.json
-Step 2 – Transform
-Read JSON file.
-Extract required weather attributes.
-Remove null values.
-Remove duplicate records.
-Convert data into CSV format.
-Output:
+```text
+data/processed/weather_processed.csv
+```
 
-weather_processed.csv
-Step 3 – Load
-Connect Python to MySQL.
-Create database table.
-Insert processed CSV data into MySQL.
-Output:
+---
 
+## 3️⃣ Load
+
+The processed data is loaded into a **MySQL database** using Python.
+
+Database table:
+
+```text
 weather_data
-📊 SQL Analysis
-The project performs various SQL analyses including:
+```
 
-Total Weather Records
-Average Temperature
-Maximum Temperature
-Minimum Temperature
-Average Humidity
-Average Pressure
-Average Wind Speed
-Weather Distribution
-Daily Weather Summary
-Top Temperature Records
-📈 Power BI Dashboard
-The Power BI dashboard provides:
+The load process includes:
 
-KPI Cards
-Temperature Trend
-Humidity Trend
-Pressure Trend
-Wind Speed Analysis
-Weather Distribution
-Interactive Filters
-Weather Summary Table
-🌐 HTML Dashboard
-The frontend dashboard contains the following pages:
+* MySQL connection
+* Database/table creation
+* CSV data insertion
+* Data validation
 
+---
+
+# 📊 SQL Analysis
+
+SQL queries are used to analyze the stored weather data.
+
+### Analysis includes:
+
+* Total number of weather records
+* Average temperature
+* Maximum temperature
+* Minimum temperature
+* Average humidity
+* Average atmospheric pressure
+* Average wind speed
+* Weather condition distribution
+* Daily weather summary
+* Highest temperature records
+
+Example:
+
+```sql
+SELECT AVG(temperature)
+FROM weather_data;
+```
+
+---
+
+# 📈 Power BI Dashboard
+
+The Power BI dashboard provides an interactive view of the weather data.
+
+### Dashboard Components
+
+* 🌡️ Temperature KPI
+* 💧 Humidity KPI
+* 🌬️ Wind Speed KPI
+* 📊 Pressure KPI
+* 📈 Temperature Trend
+* 💧 Humidity Trend
+* 🌬️ Wind Speed Analysis
+* ☁️ Weather Distribution
+* 📋 Weather Summary
+* 🔎 Interactive Filters
+
+---
+
+# 🌐 Web Dashboard
+
+A responsive frontend dashboard has also been developed using:
+
+* HTML
+* CSS
+* JavaScript
+
+### Pages
+
+```text
 🏠 Dashboard
-🌤 Current Weather
+🌤️ Current Weather
 📊 Analytics
 📋 Weather History
-ℹ About Project
-Features:
+ℹ️ About Project
+```
 
-Responsive Design
-Modern UI
-Sidebar Navigation
-Weather Cards
-Statistics
-Weather History
-Project Information
-📸 Screenshots
+### Features
+
+* Responsive design
+* Modern user interface
+* Sidebar navigation
+* Weather information cards
+* Weather statistics
+* Historical weather data
+* Analytics section
+* Project information page
+
+---
+
+# 📸 Screenshots
+
+Project screenshots can be found inside:
+
+```text
 screenshots/
+```
 
-dashboard.png
+Recommended screenshots:
 
-weather.png
+```text
+screenshots/
+│
+├── dashboard.png
+├── weather.png
+├── analytics.png
+├── history.png
+├── about.png
+├── powerbi.png
+└── mysql.png
+```
 
-analytics.png
+> 📌 Add your actual screenshots to the `screenshots` folder before publishing the repository.
 
-history.png
+---
 
-about.png
+# ⚙️ Installation
 
-powerbi.png
+## 1. Clone the Repository
 
-mysql.png
-(Add screenshots after completing the project.)
-
-⚙ Installation
-Clone Repository
+```bash
 git clone https://github.com/YOUR_USERNAME/Weather_Report_API.git
-Navigate to Project
+```
+
+## 2. Navigate to the Project
+
+```bash
 cd Weather_Report_API
-Create Virtual Environment
+```
+
+## 3. Create a Virtual Environment
+
+### Windows
+
+```bash
 python -m venv env
-Activate Virtual Environment
-Windows
+```
 
+Activate:
+
+```bash
 env\Scripts\activate
-Linux / Mac
+```
 
+### Linux / macOS
+
+```bash
+python3 -m venv env
+```
+
+Activate:
+
+```bash
 source env/bin/activate
-Install Dependencies
+```
+
+## 4. Install Dependencies
+
+```bash
 pip install -r requirements.txt
-▶ Execution Steps
-Extract Data
+```
 
-python scripts/extract.py
-Transform Data
+---
 
-python scripts/transform.py
-Load Data
+# 🔐 Configuration
 
-python scripts/load.py
-Run Complete Pipeline
+Before running the project, configure the required API and database credentials.
 
+Create an environment file:
+
+```text
+.env
+```
+
+Example:
+
+```text
+OPENWEATHER_API_KEY=your_api_key
+MYSQL_HOST=localhost
+MYSQL_USER=your_username
+MYSQL_PASSWORD=your_password
+MYSQL_DATABASE=weather_db
+```
+
+### ⚠️ Security
+
+**Never upload your API key or database password to GitHub.**
+
+Add the following to `.gitignore`:
+
+```text
+.env
+env/
+venv/
+__pycache__/
+*.pyc
+```
+
+---
+
+# ▶️ Running the Project
+
+## Run the complete ETL pipeline
+
+```bash
 python scripts/run_pipeline.py
-📋 Features
-Live Weather API Integration
-End-to-End ETL Pipeline
-JSON Processing
-Data Cleaning using Pandas
-MySQL Integration
-SQL Analytics
-Interactive Power BI Dashboard
-Responsive HTML Dashboard
-Automation Support
-Git Version Control
-🚀 Future Enhancements
-Multi-City Weather Support
-Weather Forecast Analysis
-Machine Learning Prediction
-Cloud Deployment
-Power BI Scheduled Refresh
-Email Alerts
-Login Authentication
-Dark Mode
-💼 Skills Demonstrated
-Python Programming
-REST API Integration
-ETL Development
-Pandas
-JSON Processing
-MySQL
-SQL
-Power BI
-HTML
-CSS
-JavaScript
-Git & GitHub
-Data Analytics
-Data Engineering Basics
-👨‍💻 Developer
-Kurva Ramanjaneyulu
+```
 
-Role: Python Developer | Data Analytics Learner
+Or execute each step separately.
 
-Tech Stack
+### Extract
+
+```bash
+python scripts/extract.py
+```
+
+### Transform
+
+```bash
+python scripts/transform.py
+```
+
+### Load
+
+```bash
+python scripts/load.py
+```
+
+---
+
+# 🗄️ Database Setup
+
+Import the database schema:
+
+```bash
+mysql -u root -p < sql/schema.sql
+```
+
+Then verify the database:
+
+```sql
+SHOW DATABASES;
+```
+
+Select the weather database:
+
+```sql
+USE weather_db;
+```
+
+Check the table:
+
+```sql
+SHOW TABLES;
+```
+
+View weather data:
+
+```sql
+SELECT * FROM weather_data;
+```
+
+---
+
+# 🚀 Features
+
+* ✅ Real-time Weather API Integration
+* ✅ Python-based ETL Pipeline
+* ✅ JSON Data Processing
+* ✅ Pandas Data Cleaning
+* ✅ MySQL Database Integration
+* ✅ SQL Data Analysis
+* ✅ Power BI Dashboard
+* ✅ Responsive Web Dashboard
+* ✅ Git & GitHub Version Control
+* ✅ Automation-ready Pipeline
+
+---
+
+# 🔮 Future Enhancements
+
+The project can be extended with:
+
+* 🌍 Multi-city weather support
+* 🔮 Weather forecast analysis
+* 🤖 Machine learning weather prediction
+* ☁️ AWS/cloud deployment
+* 🔄 Automated Power BI refresh
+* 📧 Email weather alerts
+* 🔐 User authentication
+* 🌙 Dark mode
+* 🐳 Docker containerization
+* ⚙️ Jenkins CI/CD pipeline
+* ☸️ Kubernetes deployment
+
+---
+
+# 💼 Skills Demonstrated
+
+### Programming
+
+* Python
+* Pandas
+* REST API
+* JSON
+
+### Database
+
+* MySQL
+* SQL
+* Data Modeling
+
+### Visualization
+
+* Power BI
+* Data Analytics
+
+### Frontend
+
+* HTML
+* CSS
+* JavaScript
+
+### DevOps / Tools
+
+* Git
+* GitHub
+* Linux
+* Automation
+
+---
+
+# 👨‍💻 Developer
+
+**Duvvuru Charan Teja**
+
+**Python Developer | Data Analytics Learner**
+
+### Technologies
+
+```text
 Python
 MySQL
 SQL
@@ -253,11 +542,26 @@ Power BI
 HTML
 CSS
 JavaScript
-📄 License
-This project is developed for educational and portfolio purposes.
+Git
+GitHub
+```
 
-⭐ Support
-If you found this project useful, please consider giving it a ⭐ on GitHub.
+---
 
-🙏 Thank You
-Thank you for visiting this project repository. Feel free to explore the source code, provide feedback, and contribute to future improvements.
+# 📄 License
+
+This project is developed for **educational and portfolio purposes**.
+
+---
+
+# ⭐ Support
+
+If you find this project useful, please consider giving the repository a ⭐ on GitHub.
+
+---
+
+## 🙏 Thank You
+
+Thank you for visiting this project.
+
+Feel free to explore the source code, provide feedback, and contribute to future improvements.
